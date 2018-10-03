@@ -3,14 +3,8 @@ title: "Intermediate SQL course"
 author: "Varun Khanna"
 date: "26 September 2018"
 output:
-  html_document:
-    highlight: kate
-    code_folding: hide
-    number_sections: yes
-    toc: yes
-    toc_float:
-      collapsed: yes
-      smooth_scroll: yes
+  md_document: default
+  github_document: toc:true toc_depth:2
 ---
 
 ```{r global_options, include=FALSE}
@@ -284,7 +278,7 @@ All the displayed tables are self-explanatory. However, a brief description is g
 
 2. The **drugs_data** table is the second table in the database. It contains the PubChem compound id (cid) and various molecular properties of drugs like molecular weight, number of rotatable bonds, the total charge on the drug etc.
 
-3. The **durgs_target** table is the third table. It contains drugbank id, type of drug, the name of the protein or receptor it binds to etc.
+3. The **durgs_target** table is the third table. It contains drugbank id, name, type of drug and the name of the protein or receptor the drug binds to.
 
 ### Subqueries 
 
@@ -327,7 +321,7 @@ Select drugbank id, protein id and protein name from *drugs_target* table where 
 kable(dbGetQuery(drugs,"SELECT drugBankID,uniProtID,proteinName FROM drugs_target WHERE uniprotID IN(SELECT uniProtID FROM drugs_target GROUP BY uniprotID HAVING COUNT(uniprotID) >40) ORDER BY drugBankID LIMIT 5"))
 ```
 
-**Note:**There are many instances where a protein target binds to more than one drug (like Histamine H1 receptor binds 49 drugs) however, there are drugs which bind to many protein targets. For example, **DB00215** shown in the table above binds to two different protein targets. This may explain why drugs have side effects.
+**Note:**There are many instances where a protein target binds to more than one drug (like Gamma-aminobutyric acid receptor subunit alpha-1 binds 89 drugs) however, there are also drugs which bind to many protein targets. For example, **DB00154** shown in the table above binds to two different protein targets. 
 
 **Example 3a:**
 
@@ -337,7 +331,8 @@ Let us now count the number of protein targets each drug binds to and sort the r
 kable(dbGetQuery(drugs,"SELECT  drugBankID, COUNT(*) AS protein_count FROM drugs_target GROUP BY drugBankID ORDER BY protein_count DESC LIMIT 5"))
 ```
 
-There are two drugs **DB03147** and **DB01049** which binds to more than 40 protein targets.
+There are five drugs **DB03147**, **DB00898**, **DB00334**, **DB00543** and **DB01049** which binds to more than 40 protein targets. Pretty amazing..!!
+These drugs not only bind there proposed protein target but also others. This may explain why certain drugs have side effects.
 
 **Example 3b:**
 
