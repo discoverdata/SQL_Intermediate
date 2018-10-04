@@ -3,8 +3,15 @@ title: "Intermediate SQL course"
 author: "Varun Khanna"
 date: "26 September 2018"
 output:
-  md_document: default
-  github_document: toc:true toc_depth:2
+  html_document:
+    code_folding: hide
+    toc: true
+    number_sections: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+  theme: slate
+  highlight: kate
 ---
 
 ```{r global_options, include=FALSE}
@@ -871,3 +878,14 @@ _Sample Output_
 ```{r ex5_3}
 kable(dbGetQuery(drugs,"SELECT DISTINCT drugBankID, CASE WHEN name LIKE '%ab' THEN 'Antibody' ELSE 'Not Antibody' END class FROM drugs_target WHERE type = 'BiotechDrug' LIMIT 10"))
 ```
+
+## Summary
+
+**Congratulations**, on completing the tutorial you are an SQL ninja now!! In this tutorial you specifically learned:
+
+1. Various types of Subqueries
+2. Advanced usage of JOINS
+3. Set operators and their use in SQL statements
+4. CASE Statements for If/Else logic
+
+In case you have any questions, comments please [mail me](mailto:varun[DOT]napster[AT]gmail[DOT]com). 

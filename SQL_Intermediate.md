@@ -3128,3 +3128,17 @@ again observe high specificity for drugs and protein targets.
 </tr>
 </tbody>
 </table>
+
+Summary
+-------
+
+**Congratulations**, on completing the tutorial you are an SQL ninja
+now!! In this tutorial you specifically learned:
+
+1.  Various types of Subqueries
+2.  Advanced usage of JOINS
+3.  Set operators and their use in SQL statements
+4.  CASE Statements for If/Else logic
+
+In case you have any questions, comments please mail me at
+varun\[DOT\]napster\[AT\]gmail\[DOT\]com.
